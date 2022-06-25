@@ -1,0 +1,10 @@
+.menu-social{
+    display: flex;
+    li{
+      padding: 0 6px;
+      &:hover{
+        cursor: pointer;
+        color: var(--hover-color);
+      }
+    }
+  }

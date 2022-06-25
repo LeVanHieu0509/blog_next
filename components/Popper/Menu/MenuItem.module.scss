@@ -1,0 +1,15 @@
+.menu-item {
+    padding: 11px 16px !important;
+    width: 100%;
+    line-height: 1.2rem;
+    justify-content: flex-start !important;
+    border-radius: 0px !important;
+    &:hover {
+        color: var(--hover-color);
+      //background: rgba(22, 24, 35, 0.03);
+      cursor: pointer;
+    }
+    &.separate {
+      border-top: 1px solid rgba(22, 24, 35, 0.12);
+    } 
+  }
