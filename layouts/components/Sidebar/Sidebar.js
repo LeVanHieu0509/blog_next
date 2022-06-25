@@ -36,7 +36,7 @@ export default function Sidebar() {
         <img
           alt="qqqq"
           width="100%"
-          height="263px"
+          height="264px"
           src="https://thehanoichamomile.files.wordpress.com/2020/06/dbf23fb3-dba1-49ef-a02b-0fa95237ae41.jpg"
         />
 
