@@ -1,0 +1,19 @@
+.wrapper {
+    width: 100%;
+    background: rgb(255, 255, 255);
+    box-shadow: rgb(0 0 0 / 12%) 0px 2px 12px;
+    border: 1px solid #d3b062;
+    padding: 5px;
+    box-sizing: border-box;
+    max-height: min((100vh - 96px) - 60px, 734px);
+    min-height: 100px;
+    text-align: center;
+    flex-direction: column;
+    display: flex;
+    border: 3px solid #d3b062;
+    z-index: 9999;
+  }
+
+  
+  
+  
