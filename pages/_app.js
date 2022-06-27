@@ -1,4 +1,4 @@
-import { DefaultLayout } from "../components/layouts/index";
+import { DefaultLayout } from "../components/Layout";
 import "../styles/globals.scss";
 // own css files here
 
