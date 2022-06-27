@@ -5,10 +5,11 @@ import Sidebar from "./layouts/components/Sidebar";
 export default function Layout({ children }) {
   return (
     <>
-      <div className="wrapper-box" style={{ position: "relative" }}>
-        <div className="grid grid-cols-1">
-          <Header />
-        </div>
+      <div
+        className="wrapper-box"
+        style={{ position: "relative", width: "100%" }}
+      >
+        <Header />
         <div className="grid grid-cols-1">
           <Banner />
         </div>

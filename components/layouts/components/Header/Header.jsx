@@ -3,36 +3,44 @@ import classNames from "classnames/bind";
 import styles from "./Header.module.scss";
 import Menu from "components/Popper/Menu";
 import ThreeIcon from "components/ThreeIcon/ThreeIcon";
+import Link from "next/link";
 
 const cx = classNames.bind(styles);
 
 const MENU_ITEMS = [
   {
-    title: "English",
-    //cứ thằng nào có children thì nó là cấp 2
-    // data là những item con
-    children: {
-      title: "language",
-      data: [
-        {
-          type: "Language",
-          code: "en",
-          title: "English",
-        },
-        {
-          type: "Language",
-          code: "vi",
-          title: "Việt Nam",
-        },
-      ],
-    },
+    to: "",
+    title: "HOME",
   },
   {
-    title: "Feedback",
-    to: "/feedback",
+    to: "",
+    title: "BLOG",
+    children: [
+      {
+        title: "minimali",
+        to: "",
+      },
+      {
+        title: "minimali",
+        to: "",
+      },
+      {
+        title: "minimali",
+        to: "",
+      },
+    ],
   },
   {
-    title: "Keyboard shortcuts",
+    to: "",
+    title: "YOUTOBE",
+  },
+  {
+    to: "",
+    title: "ỦNG HỘ",
+  },
+  {
+    to: "",
+    title: "日本語",
   },
 ];
 
@@ -66,7 +74,43 @@ export default function Header() {
             <a href="#">日本語</a>
           </li>
         </ul>
+        <div className={cx("hamburger-icon")}>
+          <input
+            type="checkbox"
+            id="checkbox1"
+            className="checkbox1 visuallyHidden"
+          />
+          <label htmlFor="checkbox1" className="label-box">
+            <div className="hamburger hamburger1">
+              <span className="bar bar1"></span>
+              <span className="bar bar2"></span>
+              <span className="bar bar3"></span>
+              <span className="bar bar4"></span>
+            </div>
+            <div className={cx("nav_right1")}>
+              <ThreeIcon />
+            </div>
+          </label>
+
+          <nav className="navigate">
+            <ul className="listItemNav">
+              {MENU_ITEMS.map((item, index) => (
+                <li key={index} className="itemNav">
+                  <a className="link"> {item.title} </a>{" "}
+                  {item.children && (
+                    <ul>
+                      {item.children.map((itemChildren, index) => (
+                        <li key={index}>{itemChildren.title}</li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
       </div>
+
       <div className={cx("nav_right")}>
         <ThreeIcon />
       </div>
