@@ -1,14 +1,9 @@
 import React from "react";
 import classNames from "classnames/bind";
 import styles from "./Header.module.scss";
-import {
-  FakebookIcon,
-  InstagramIcon,
-  MessageIcon,
-  YoutobeIcon,
-} from "../../../components/Icons";
-import Menu from "../../../components/Popper/Menu";
+import Menu from "components/Popper/Menu";
 import ThreeIcon from "components/ThreeIcon/ThreeIcon";
+
 const cx = classNames.bind(styles);
 
 const MENU_ITEMS = [

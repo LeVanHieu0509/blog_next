@@ -1,5 +1,4 @@
 import Banner from "../components/Banner";
-import Head from "next/head";
 import React from "react";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
