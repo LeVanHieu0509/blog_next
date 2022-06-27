@@ -83,7 +83,7 @@ export default function Sidebar() {
       </div>
       <div>
         <Button className={cx("widget-box")}>INSTAGRAM</Button>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-3 gap-3">
           {info.listImage.map((image, index) => (
             <Link key={index} href="#">
               <div className={cx("img-instagram-box")}>

@@ -4,7 +4,7 @@ import moment from "moment";
 import Image from "next/image";
 export default function PostCard({ post }) {
   return (
-    <div className="bg-white shadow-lg rouned-lg p-0 lg:p-8 pb-12 mb-8">
+    <div className="bg-white shadow-lg rouned-lg p-0 pb-12 mb-8">
       <div className="relative overflow-hidden shadow-md pb-80 mb-6">
         <img
           className="object-top absolute h-80 w-full object-cover"
