@@ -6,9 +6,14 @@ export default function Layout({ children }) {
   return (
     <>
       <div className="wrapper-box" style={{ position: "relative" }}>
-        <Header />
-        <Banner />
-        <div className="content" style={{ width: "1170px", margin: "auto" }}>
+        <div className="grid grid-cols-1">
+          <Header />
+        </div>
+        <div className="grid grid-cols-1">
+          <Banner />
+        </div>
+
+        <div className="content" style={{ maxWidth: "1170px", margin: "auto" }}>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             <div className="lg:col-span-8 col-span-1">{children}</div>
             <div className="lg:col-span-4 col-span-1">
