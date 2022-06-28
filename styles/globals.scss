@@ -307,3 +307,24 @@ a {
   to {min-height: 20vh;}
 }
 
+
+@media (min-width: 1200px)
+{
+  .content {
+    width: 1170px;
+}
+}
+
+@media (min-width: 992px){
+  .content{
+      width: calc(90%);
+  }
+}
+
+@media (max-width: 576px){
+  .content{
+    padding-left: 15px;
+    padding-right: 15px;
+
+  }
+}

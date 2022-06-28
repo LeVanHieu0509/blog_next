@@ -66,8 +66,13 @@
 }
 
 @media (max-width: 576px){
-    .title {
-    
-        font-size: 2rem;
-    }
+   
+.title{
+    font-size: 2rem;
+    color: #000;
+    line-height: 1.15;
+    &::before{
+        top: 73px;        
+    }  
+}
 }

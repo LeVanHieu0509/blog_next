@@ -4,6 +4,7 @@ const nextConfig = {
   baseUrl: ".",
   paths: {
     "~/*": ["src/*"],
+    "@/components/*": ["./components/*"],
   },
 };
 
