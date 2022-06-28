@@ -11,7 +11,7 @@ export default async function comments(req, res) {
       authorization: `Bearer ${graphqlToken}`,
     },
   });
-  console.log("graphqlToken", graphqlToken);
+
   const query = gql`
     mutation CreateComment(
       $name: String!

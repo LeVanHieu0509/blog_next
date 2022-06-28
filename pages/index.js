@@ -1,3 +1,4 @@
+import Post from "components/Post";
 import Head from "next/head";
 import { PostCard, PostWidget, Categories } from "../components";
 import { getPosts } from "../services";
@@ -11,6 +12,17 @@ export default function Home({ posts }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="col-span-1 md:col-span-2">
+          {" "}
+          <Post />
+        </div>
+
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+      </div>
       <div>
         {posts.map((post, index) => (
           <PostCard key={post.cursor} post={post.node} />
@@ -20,10 +32,27 @@ export default function Home({ posts }) {
   );
 }
 
-// Fetch data at build time
+// Fetch data at build time (Chỉ có dữ liệu và không cần path)
 export async function getStaticProps() {
   const posts = (await getPosts()) || [];
+
+  //validate
+  if (!posts) {
+    return {
+      notFound: true,
+    };
+
+    // Redirect khi data gọi về bị lỗi
+    // return {
+    //   redirect: {
+    //     destination: "/",
+    //     permanent: false,
+    //   },
+    // };
+  }
+
   return {
+    //props là cái gì thì component Home sẽ nhận được props đó
     props: { posts },
   };
 }

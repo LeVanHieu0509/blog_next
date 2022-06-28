@@ -12,7 +12,7 @@ export default function Categories({ slug }) {
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console.log("category", categories);
+
   return (
     <div className="bg-white shadow-lg rounded-lg p-8 mb-8">
       <h3 className="text-xl mb-8 font-semibold border-b">

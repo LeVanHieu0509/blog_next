@@ -14,18 +14,16 @@ import {
 import { getPosts, getPostDetail } from "../../services";
 export default function PostDetails({ post }) {
   const router = useRouter();
-  console.log(post);
   if (router.isFallback) {
     return <Loader />;
   }
   return (
     <>
       <Head>
+        <title>{post.title}</title>
         <meta property="og:url" content={post.featuredImage.url}></meta>
         <meta property="og:title" content={post.title}></meta>
         <meta property="og:description" content={post.excerpt}></meta>
-        <title>{post.title}</title>
-        {/* <meta name="description" content={post.excerpt} /> */}
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <PostDetail post={post} />
@@ -33,40 +31,39 @@ export default function PostDetails({ post }) {
       {/* <AdjacentPosts slug={post.slug} createdAt={post.createdAt} /> */}
       <CommentsForm slug={post.slug} />
       <Comments slug={post.slug} />
-      {/* <div className="container mx-auto px-10 mb-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          <div className="col-span-1 lg:col-span-8">
-           
-          </div>
-          <div className="col-span-1 lg:col-span-4">
-            <div className="relative lg:sticky top-8">
-              <PostWidget
-                slug={post.slug}
-                categories={post.categories.map((category) => category.slug)}
-              />
-              <Categories />
-            </div>
-          </div>
-        </div>
-      </div> */}
     </>
   );
 }
 
+//Hàm này chỉ chạy phía server và client không chạy
+//Next js có hỗ trợ fetch api
 export async function getStaticProps({ params }) {
   const data = await getPostDetail(params.slug);
+  console.log("data", data);
   return {
     props: {
+      //Có thể map lại data cần thiết (lọc data cần show ra ngoài client)
+      //Nếu dữ liệu mà nhiều quá thì cắt bớt
+      // Dữ liệu này sẽ được show ra ở file source trên browser
       post: data,
     },
   };
 }
 
+//ở chế độ dev mode thì user gửi request lên thì nó sẽ tạo ra file và trả về
+//Còn ở chế độ product thì những file này nó đã được tạo ra rồi và
+// user gửi request thì trả về file html đã được tạo cho user luôn
 export async function getStaticPaths() {
   const posts = await getPosts();
 
+  //Path là một mảng các object, có bao nhiều giá trị thì sẽ trả về bấy nhiêu file html
+  //Khi lên trăm ngàn thì phải sử dụng ICR
+  //slug hay id thì tùy vào đường dẫn
   return {
     paths: posts.map(({ node: { slug } }) => ({ params: { slug } })),
-    fallback: false,
+    //fallback: true ->
+    //fallback: false -> nếu không có slug match thì trả về notfound
+    //fallback: blocking ->
+    fallback: false, //or true || blocking
   };
 }

@@ -11,7 +11,7 @@ export default function Comments({ slug }) {
     });
   }, []);
 
-  console.log("comments", comments, slug);
+
   return (
     <>
       {comments.length > 0 && (
