@@ -9,11 +9,11 @@ const cx = classNames.bind(styles);
 
 const MENU_ITEMS = [
   {
-    to: "",
+    to: "/",
     title: "HOME",
   },
   {
-    to: "",
+    to: "/blog",
     title: "BLOG",
     children: [
       {
@@ -31,15 +31,19 @@ const MENU_ITEMS = [
     ],
   },
   {
-    to: "",
+    to: "/",
     title: "YOUTOBE",
   },
   {
-    to: "",
+    to: "/ungho",
     title: "ỦNG HỘ",
   },
   {
-    to: "",
+    to: "/about",
+    title: "ABOUT ME",
+  },
+  {
+    to: "/",
     title: "日本語",
   },
 ];
@@ -50,30 +54,32 @@ export default function Header() {
       <div className={cx("nav_left")}>
         <ul className={cx("nav-menu")}>
           <li className={cx("menu-item")}>
-            <a href="#">HOME</a>
+            <Link href="/">HOME</Link>
           </li>
 
           <Menu items={MENU_ITEMS}>
             <li className={cx("menu-item menu-item-blog")}>
-              <a className={cx("menu-item-link")} href="#">
+              <Link className={cx("menu-item-link")} href="/blog">
                 BLOG
-              </a>
+              </Link>
             </li>
           </Menu>
 
           <li className={cx("menu-item")}>
-            <a href="#">YOUTOBE</a>
+            <Link href="/youtobe">YOUTOBE</Link>
           </li>
           <li className={cx("menu-item")}>
-            <a href="#">ỦNG HỘ</a>
+            <Link href="/ungho">ỦNG HỘ</Link>
           </li>
           <li className={cx("menu-item")}>
-            <a href="#">ABOUT ME</a>
+            <Link href="/about-me">ABOUT ME</Link>
           </li>
           <li className={cx("menu-item")}>
-            <a href="#">日本語</a>
+            <Link href="/">日本語</Link>
           </li>
         </ul>
+
+        {/* menu small */}
         <div className={cx("hamburger-icon")}>
           <input
             type="checkbox"
@@ -96,7 +102,7 @@ export default function Header() {
             <ul className="listItemNav">
               {MENU_ITEMS.map((item, index) => (
                 <li key={index} className="itemNav">
-                  <a className="link"> {item.title} </a>{" "}
+                  <a className="link"> {item.title} </a>
                   {item.children && (
                     <ul>
                       {item.children.map((itemChildren, index) => (

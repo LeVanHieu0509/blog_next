@@ -8,10 +8,10 @@ import {
   CommentsForm,
   Loader,
   PostCard,
-  PostDetail,
   PostWidget,
 } from "../../components";
 import { getPosts, getPostDetail } from "../../services";
+import PostDetail from "components/PostDetail";
 export default function PostDetails({ post }) {
   const router = useRouter();
   if (router.isFallback) {
@@ -26,6 +26,7 @@ export default function PostDetails({ post }) {
         <meta property="og:description" content={post.excerpt}></meta>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <PostDetail post={post} />
       <Author author={post.author} />
       {/* <AdjacentPosts slug={post.slug} createdAt={post.createdAt} /> */}
@@ -39,7 +40,7 @@ export default function PostDetails({ post }) {
 //Next js có hỗ trợ fetch api
 export async function getStaticProps({ params }) {
   const data = await getPostDetail(params.slug);
-  console.log("data", data);
+
   return {
     props: {
       //Có thể map lại data cần thiết (lọc data cần show ra ngoài client)

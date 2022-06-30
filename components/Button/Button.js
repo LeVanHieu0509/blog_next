@@ -8,6 +8,7 @@ const cx = classNames.bind(styles);
 export default function Button({
   to,
   href,
+  smallist = false,
   small = false,
   large = false,
   outline = false,
@@ -54,6 +55,7 @@ export default function Button({
     primary,
     outline,
     small,
+    smallist,
     large,
     text,
     disable,
@@ -73,6 +75,7 @@ Button.prototype = {
   to: PropTypes.string,
   href: PropTypes.string,
   small: PropTypes.bool,
+  smallist: PropTypes.bool,
   large: PropTypes.bool,
   outline: PropTypes.bool,
   text: PropTypes.bool,

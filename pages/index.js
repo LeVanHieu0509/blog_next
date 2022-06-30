@@ -13,21 +13,26 @@ export default function Home({ posts }) {
       </Head>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="col-span-1 md:col-span-2">
-          {" "}
-          <Post />
-        </div>
-
-        <Post />
-        <Post />
-        <Post />
-        <Post />
+        {posts.map((post, index) =>
+          index == 0 ? (
+            <>
+              {" "}
+              <div className="col-span-1 md:col-span-2">
+                <Post key={post.cursor} post={post.node} />
+              </div>
+            </>
+          ) : (
+            <>
+              <Post key={post.cursor} post={post.node} />
+            </>
+          )
+        )}
       </div>
-      <div>
+      {/* <div>
         {posts.map((post, index) => (
           <PostCard key={post.cursor} post={post.node} />
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }

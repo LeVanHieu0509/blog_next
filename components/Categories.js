@@ -14,7 +14,7 @@ export default function Categories({ slug }) {
   }, []);
 
   return (
-    <div className="bg-white shadow-lg rounded-lg p-8 mb-8">
+    <div className="p-8 mb-8">
       <h3 className="text-xl mb-8 font-semibold border-b">
         {slug ? "Categories" : "Categories Post"}
       </h3>
