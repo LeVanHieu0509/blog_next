@@ -71,6 +71,23 @@
     min-width: 88px;
     padding: 4px 16px;
   }
+    
+  .smallist {
+    //min-width: 88px;
+    padding: 2px 4px;
+    font-size: 14px !important;
+    padding: 2px 7px !important;
+    margin: 0 10px 10px 0 !important;
+    color: #000;
+    border: 1px solid #d3b062;
+    float: left;
+    background-color: transparent;
+    -webkit-transition: .6s all linear;
+    -moz-transition: .6s all linear;
+    -o-transition: .6s all linear;
+    transition: .6s all linear;
+    
+  }
   .large {
     min-width: 140px;
     padding: 14px 16px;

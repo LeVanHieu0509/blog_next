@@ -61,6 +61,7 @@
     
 }
 .sumary{
+    min-height: 130px;
     text-align: left;
     word-wrap: break-word;
     font-size: .9375rem;
@@ -105,6 +106,7 @@
 }
 .img{
     padding: 10px 0;
+    cursor: pointer;
 }
 
 @media (max-width: 576px){

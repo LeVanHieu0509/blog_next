@@ -1,11 +1,14 @@
 import moment from "moment";
+import Link from "next/link";
 import React from "react";
-import PostCard from "./PostCard";
-import PostWidget from "./PostWidget";
+
+import styles from "./PostDetail.module.scss";
+import classNames from "classnames/bind";
+
+const cx = classNames.bind(styles);
 
 export default function PostDetail({ post }) {
   const getContentFragment = (index, text, obj, type) => {
-
     let modifiedText = text;
 
     if (obj.bold) {
@@ -29,7 +32,7 @@ export default function PostDetail({ post }) {
         );
       case "paragraph":
         return (
-          <p key={index} className="mb-8">
+          <p key={index} className={cx("paragraph")}>
             {modifiedText.map((item, i) => (
               <React.Fragment key={i}>{item}</React.Fragment>
             ))}
@@ -58,37 +61,47 @@ export default function PostDetail({ post }) {
         return modifiedText;
     }
   };
+
   return (
-    <div className="bg-white rounded-lg shadow-lg lg:p-8 pb-12 mb-8">
+    <div className="lg:p-8 pb-12 mb-8">
+      <h1 className={cx("title")}>
+        <Link href={`/post/${post.slug}`}>{post.title}</Link>
+      </h1>
+
+      {/* tách ra 1 component */}
+
+      <div className={cx("entry-meta")}>
+        <div>
+          <span className={cx("entry-meta-icon")}>icon</span>
+          <span className={cx("entry-meta-des")}>
+            <Link href="/author/thehanoichamomile">thehanoichamomile</Link>
+          </span>
+        </div>
+        <div>
+          <span className={cx("entry-meta-icon")}>icon</span>
+          <span className={cx("entry-meta-des")}>
+            <Link href="/category/cuoc-song-o-ha-noi/">Cuộc sống ở hà nội</Link>
+            , <Link href="/category/nhat-ky/">Nhật ký</Link>
+          </span>
+        </div>
+        <div>
+          <span className={cx("entry-meta-icon")}>icon</span>
+          <span>4</span>
+          <span className={cx("entry-meta-des")}>
+            <Link href="/">Comment</Link>
+          </span>
+        </div>
+      </div>
+
+      {/* content */}
       <div className="relative overflow-hidden shadown-md">
         <img
           src={post.featuredImage.url}
           alt={post.title}
-          className="object-top rounded-lg h-full w-full"
+          className="object-top  h-full w-full"
         />
       </div>
-      <div className="m-3 mt-6">
-        <div className="font-medium text-gray-700 mb-8">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 inline mr-2 text-pink-500"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-            />
-          </svg>
-          <span className="align-middle">
-            {moment(post.createdAt).format("MMM DD, YYYY")}
-          </span>
-        </div>
-        <h1 className="text-left font-semibold text-3xl mb-8 ">{post.title}</h1>
-        {console.log(post.content.raw)}
+      <div className="mt-9">
         {post.content.raw.children.map((typeObj, index) => {
           const children = typeObj.children.map((item, itemIndex) => {
             return getContentFragment(itemIndex, item.text, item);
