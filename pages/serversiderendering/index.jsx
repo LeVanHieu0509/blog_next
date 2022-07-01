@@ -8,24 +8,32 @@ import { getPosts } from "services";
 //Một component nào đó không muốn render phía server chỉ muốn render phía client thôi
 // sử dụng dynamic để import cái component đó
 const Header = dynamic(() => import("components/test/header"), { ssr: false });
+//component Hearder có ssr = false thì chỉ chạy ở bên phía client còn server thì không
+
+//Bài học  SSG and Data Fetching on client side
 
 export default function ServerSideRendering() {
   const [postList, setPostList] = useState([]);
   const router = useRouter();
+
   const page = router.query?.page;
 
+  console.log(router.query);
+  //Khi các cái file markup được render phía ui rồi thì sau đó
+
+  // Ở phía client sẽ gọi tới useEffect mà call API và set data để render ra data
+  //trong view  page source nó sẽ không render ra những thẻ html
   useEffect(() => {
     //Chú ý chỗ này khi component render
     // Lần đầu tiên mảng bị trống nên mình sẽ return ra để cho component chạy tới lần thứ 2
     // Thì mới call api render về phí UI
-    if (page) return;
+    if (!page) return;
 
     (async function () {
       const posts = (await getPosts()) || [];
-      console.log("posts", posts);
       setPostList(posts);
     })();
-  }, []);
+  }, [page]);
 
   //Shallow Routing
   const handleOnClick = () => {
@@ -44,9 +52,10 @@ export default function ServerSideRendering() {
   return (
     <div>
       Test client side rendering
+      {/* render ở phía server */}
       <Header />
-      test
-      <ul>
+      <ul className="post-list">
+        {/*render ra phía client */}
         {postList.map((post, index) => (
           <PostCard key={post.cursor} post={post.node} />
         ))}
@@ -59,7 +68,7 @@ export default function ServerSideRendering() {
 // từ server tạo ra những file html trả về phía clients
 //call api
 export async function getStaticProps() {
-  console.log("fetch api treene server");
+  console.log("server");
   return {
     props: {},
   };

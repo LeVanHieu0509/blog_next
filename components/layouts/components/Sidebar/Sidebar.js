@@ -4,7 +4,7 @@ import styles from "./Sidebar.module.scss";
 import classNames from "classnames/bind";
 import Button from "components/Button";
 import PostWidget from "components/PostWidget";
-import Categories from "components/Categories";
+import Categories from "components/Category/Categories";
 import Link from "next/link";
 import { info } from "../../../../constants/info";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

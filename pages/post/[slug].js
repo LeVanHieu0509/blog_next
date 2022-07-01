@@ -20,11 +20,24 @@ export default function PostDetails({ post }) {
   return (
     <>
       <Head>
+        <meta name="description" content={post.excerpt} />
         <title>{post.title}</title>
-        <meta property="og:url" content={post.featuredImage.url}></meta>
-        <meta property="og:title" content={post.title}></meta>
-        <meta property="og:description" content={post.excerpt}></meta>
+        <meta property="og:url" content={post.featuredImage.url} />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.excerpt} />
         <link rel="icon" href="/favicon.ico" />
+        <meta property="og:image:width" content="1200"></meta>
+        <meta property="og:image:height" content="800"></meta>
+        <meta property="og:site_name" content="KIRA"></meta>
+        <meta
+          property="article:modified_time"
+          content="2022-06-27T03:09:08+00:00"
+        ></meta>
+        <meta
+          property="article:published_time"
+          content="2022-05-05T04:03:43+00:00"
+        ></meta>
       </Head>
 
       <PostDetail post={post} />

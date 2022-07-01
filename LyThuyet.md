@@ -20,13 +20,18 @@
 ### Một component nào đó không muốn render phía server chỉ muốn render phía client thôi
 
     - sử dụng dynamic để import cái component đó
-    - const Header = dynamic(() => import("components/test/header"), { ssr: false }); //true thì sẽ render cả thì server luôn
+    - const Header = dynamic(() => import("components/test/header"), { ssr: false });
+    - ssr: true thì sẽ render cả thì server luôn
 
 ### Render 1 phần ở server trước một file html là khung chưa có dữ liệu
 
-    - Load về client và gọi tới file js để load data lên
+    - Load file markup về client và gọi tới file js để load data lên
     - Sau đó hiện thị lên giao diện
+    - Sử dụng useEffect để load data
+    - Data mà được render ra từ phía Client thì sẽ không có thẻ html trong view page source
 
-### Để đổi url mà không muốn chạy lại getStatic Props thì có thể sử dụng shallow routing
+### Để đổi url mà không muốn chạy lại getStatic Props thì có thể sử dụng shallow routing (chỉ render từ phía client có shallow = true): không chạy lại hàm getStaticProps
 
+    - Lần đầu tiên render thì query sẽ bị {}
+    - Nó sẽ trigger update ở client side và không có gọi lại hàm getSaticProps
     - Chỉ sử dụng ở phía client và server ko liên quan thì sử dụng sallow routing
