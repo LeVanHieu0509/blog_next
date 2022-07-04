@@ -1,17 +1,12 @@
-import React, { useEffect } from "react";
-import { useRouter } from "next/router";
-import Head from "next/head";
-import {
-  Author,
-  Categories,
-  Comments,
-  CommentsForm,
-  Loader,
-  PostCard,
-  PostWidget,
-} from "../../components";
-import { getPosts, getPostDetail } from "../../services";
 import PostDetail from "components/PostDetail";
+import Head from "next/head";
+import { useRouter } from "next/router";
+import {
+  Author, Comments,
+  CommentsForm,
+  Loader
+} from "../../components";
+import { getPostDetail, getPosts } from "../../services";
 export default function PostDetails({ post }) {
   const router = useRouter();
   if (router.isFallback) {

@@ -97,6 +97,38 @@ export const getCategories = async () => {
   return result.categories;
 };
 
+//get post theo category
+
+export const getPostCategory = async (slug) => {
+  const query = gql`
+    query getPostCategory($slug: String!) {
+      category(where: {slug: $slug}) {
+        slug
+        name
+        posts {
+          author {
+            bio
+            name
+            photo {
+              url
+            }
+          }
+          excerpt
+          featuredPost
+          title
+          slug
+          featuredImage {
+            url
+          }
+        }
+      }
+    }
+  `;
+  const result = await request(graphqlAPI, query, { slug });
+
+  return result.category;
+};
+
 export const getComments = async (slug) => {
   const query = gql`
     query GetComments($slug: String!) {
