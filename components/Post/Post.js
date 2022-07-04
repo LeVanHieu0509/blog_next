@@ -42,7 +42,7 @@ export default function Post({ post }) {
         rightIcon={<FontAwesomeIcon icon={faArrowRight} />}
         className={cx("widget-box")}
       >
-        <Link href={`post/${post.slug}`}> READ MORE</Link>
+        <Link href={`/post/${post.slug}`}> READ MORE</Link>
       </Button>
     </article>
   );
